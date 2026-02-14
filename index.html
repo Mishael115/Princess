@@ -3,52 +3,409 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Happy Valentine’s Day Smallie</title>
+  <title>Happy Valentine’s Day Smallie 💌</title>
+
   <style>
-    body{font-family:system-ui,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.6}
-    h1{margin-bottom:0}
-    .sub{margin-top:6px;color:#444}
-    .card{border:1px solid #eee;border-radius:14px;padding:18px;margin:18px 0}
-    button{padding:10px 14px;border:0;border-radius:10px;cursor:pointer}
+    :root{
+      --bg1:#fff0f6;
+      --bg2:#ffe6ee;
+      --card:#ffffffcc;
+      --ink:#1f1f27;
+      --muted:#5b5b66;
+      --stroke:#ffffff80;
+      --shadow: 0 20px 60px rgba(20, 10, 30, .12);
+      --shadow2: 0 10px 30px rgba(20, 10, 30, .10);
+      --radius: 22px;
+      --accent: rgba(255, 70, 140, .55);
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--ink);
+      overflow-x:hidden;
+      background:
+        radial-gradient(1200px 700px at 20% 10%, #ffd6e6 0%, transparent 60%),
+        radial-gradient(900px 600px at 80% 20%, #ffe0f0 0%, transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+
+    /* subtle grain */
+    body::before{
+      content:"";
+      position:fixed; inset:0;
+      pointer-events:none;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.10'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
+      opacity:.35;
+    }
+
+    .wrap{
+      min-height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:36px 16px 70px;
+      position:relative;
+    }
+
+    .card{
+      width:min(920px, 100%);
+      background:var(--card);
+      border:1px solid var(--stroke);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow:hidden;
+      position:relative;
+      z-index:1;
+      animation: fadeUp .9s ease both;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:18px 18px;
+      border-bottom:1px solid #ffffff90;
+      background: linear-gradient(90deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid #ffffffaa;
+      background: rgba(255,255,255,.55);
+      box-shadow:var(--shadow2);
+      color:var(--muted);
+      font-size:13px;
+      user-select:none;
+    }
+
+    .controls{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+    }
+
+    .btn{
+      border:0;
+      border-radius:999px;
+      padding:10px 14px;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:var(--shadow2);
+      background: rgba(255,255,255,.78);
+      border:1px solid #ffffffaa;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px) scale(.99); }
+
+    .hero{
+      padding:34px 28px 22px;
+      text-align:center;
+    }
+
+    .date{
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:10px;
+      animation: fade .9s ease .1s both;
+    }
+
+    h1{
+      margin:0;
+      font-size: clamp(32px, 5vw, 56px);
+      letter-spacing:-.02em;
+      line-height:1.05;
+      animation: fadeUp .9s ease .15s both;
+    }
+
+    .sub{
+      margin:12px auto 0;
+      max-width: 60ch;
+      color:var(--muted);
+      font-size: clamp(15px, 2.1vw, 18px);
+      animation: fadeUp .9s ease .25s both;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      padding: 14px 18px 26px;
+    }
+
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    .panel{
+      background: rgba(255,255,255,.62);
+      border:1px solid #ffffffa8;
+      border-radius: 18px;
+      padding:18px 18px;
+      box-shadow: var(--shadow2);
+      animation: fadeUp .9s ease both;
+    }
+    .panel:nth-child(1){ animation-delay:.28s; }
+    .panel:nth-child(2){ animation-delay:.34s; }
+    .panel:nth-child(3){ animation-delay:.40s; }
+    .panel:nth-child(4){ animation-delay:.46s; }
+
+    h2{
+      margin:0 0 10px;
+      font-size:20px;
+      letter-spacing:-.01em;
+    }
+    h3{
+      margin:14px 0 6px;
+      font-size:16px;
+      color: #2a2a33;
+    }
+    p{ margin:0 0 10px; color:var(--muted); }
+    ol{ margin:10px 0 0 20px; color:var(--muted); }
+    li{ margin:6px 0; }
+
+    blockquote{
+      margin: 14px 0 0;
+      padding: 14px 14px;
+      border-left: 4px solid var(--accent);
+      background: rgba(255,255,255,.55);
+      border-radius: 14px;
+      color: var(--muted);
+    }
+
+    .footer{
+      text-align:center;
+      padding: 8px 18px 24px;
+      color: #6b6b78;
+      font-size: 13px;
+      animation: fade .9s ease .55s both;
+    }
+
+    /* Floating hearts layer */
+    #hearts{
+      position:fixed; inset:0;
+      pointer-events:none;
+      overflow:hidden;
+      z-index:0;
+    }
+    .heart{
+      position:absolute;
+      width:14px; height:14px;
+      transform: rotate(45deg);
+      opacity:.35;
+      filter: drop-shadow(0 10px 18px rgba(255, 60, 120, .12));
+      animation: floatUp linear forwards;
+      background: rgba(255, 70, 140, .35);
+      border-radius: 4px;
+    }
+    .heart:before, .heart:after{
+      content:"";
+      position:absolute;
+      width:14px; height:14px;
+      background: inherit;
+      border-radius: 50%;
+    }
+    .heart:before{ left:-7px; top:0; }
+    .heart:after{ left:0; top:-7px; }
+
+    @keyframes floatUp{
+      from { transform: translateY(20px) rotate(45deg); }
+      to   { transform: translateY(-110vh) rotate(45deg); }
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform: translateY(14px); }
+      to{ opacity:1; transform: translateY(0); }
+    }
+    @keyframes fade{
+      from{ opacity:0; }
+      to{ opacity:1; }
+    }
+
+    .sparkle{
+      position:absolute;
+      right:-40px;
+      top:-40px;
+      width:160px;
+      height:160px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), transparent 55%),
+                  radial-gradient(circle at 60% 60%, rgba(255,140,180,.55), transparent 60%);
+      filter: blur(1px);
+      transform: rotate(18deg);
+      opacity:.7;
+      pointer-events:none;
+    }
   </style>
 </head>
+
 <body>
-  <h2>Feb 14th</h2>
-  <h1>Happy Valentine’s Day</h1>
-  <p class="sub">To A Princess 💌</p>
+  <div id="hearts"></div>
 
-  <p>Celebrating the person who listens to my pervy mind and still decides to be my friend beacuse you're a perv too lol.</p>
+  <div class="wrap">
+    <main class="card">
+      <div class="sparkle"></div>
 
-  <div class="card">
-    <h2>Why You’re not The Best, i just dey manage you</h2>
-    <h3>the OG</h3>
-    <p><em>[hō-mē] noun • Universal</em></p>
-    <ol>
-      <li>Supports you when you're down and humble-brags for you when you're up.</li>
-      <li>Makes you laugh until your stomach hurts.</li>
-      <li>Listens to your endless stories without (much) complaint.</li>
-    </ol>
+      <header class="topbar">
+        <div class="pill">💌 Valentine’s Note • Bestie Edition</div>
+        <div class="controls">
+          <button class="btn" id="musicBtn">▶ Play music</button>
+          <button class="btn" id="heartsBtn">💗 Hearts: ON</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="date">Feb 14th</div>
+        <h1>Happy Valentine’s Day</h1>
+        <p class="sub">To A Princess 💌</p>
+
+        <p class="sub" style="max-width:70ch;">
+          Celebrating the person who listens to my pervy mind and still decides to be my friend because you’re a perv too lol.
+        </p>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <h2>Why You’re not The Best, i just dey manage you</h2>
+          <h3>the OG</h3>
+          <p><em>[hō-mē] noun • Universal</em></p>
+          <ol>
+            <li>Supports you when you're down and humble-brags for you when you're up.</li>
+            <li>Makes you laugh until your stomach hurts.</li>
+            <li>Listens to your endless stories without (much) complaint.</li>
+          </ol>
+        </div>
+
+        <div class="panel">
+          <h2>Appreciation Post</h2>
+          <h3>The Perfect friend</h3>
+          <p>Thank you for actually being a good person regardless of your mood swings.</p>
+
+          <h3>The Listener</h3>
+          <p>Thanks for letting me vent and supporting me through the chaos.</p>
+
+          <h3>Priceless</h3>
+          <p>Your friendship is worth more than anything I could buy.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Quote of the day ✨</h2>
+          <blockquote>
+            “Friendship is born at that moment when one person says to another, ‘What! You too? I thought I was the only one.’”
+            <br>— C.S. Lewis
+          </blockquote>
+        </div>
+
+        <div class="panel">
+          <h2>Tap for a surprise 🎁</h2>
+          <p>Go on… press the button.</p>
+          <button class="btn" id="surpriseBtn">Send Brofist</button>
+          <p id="surpriseText" style="margin-top:12px; display:none; color:var(--muted); font-weight:600;">
+            👊 Brofist delivered. Happy Valentine’s Day!
+          </p>
+        </div>
+      </section>
+
+      <div class="footer">
+        Made because you’re awesome 💗
+      </div>
+    </main>
   </div>
 
-  <div class="card">
-    <h2>Appreciation Post</h2>
-    <h3>The Perfect friend</h3>
-    <p>Thank you for actually being a good person regardless of your mood swings.</p>
+  <!-- MUSIC:
+       1) Upload a file named "music.mp3" into the SAME repo folder as index.html
+       2) Click Play music (autoplay is blocked by browsers) -->
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="music.mp3" type="audio/mpeg" />
+  </audio>
 
-    <h3>The Listener</h3>
-    <p>Thanks for letting me vent and supporting me through the chaos.</p>
+  <script>
+    // ---- Floating hearts ----
+    const heartsLayer = document.getElementById("hearts");
+    let heartsOn = true;
+    let heartInterval = null;
 
-    <h3>Priceless</h3>
-    <p>Your friendship is worth more than anything I could buy.</p>
-  </div>
+    function spawnHeart(){
+      const h = document.createElement("div");
+      h.className = "heart";
 
-  <blockquote>
-    “Friendship is born at that moment when one person says to another, ‘What! You too? I thought I was the only one.’”
-    <br/>— C.S. Lewis
-  </blockquote>
+      const size = 10 + Math.random()*18;
+      h.style.width = size + "px";
+      h.style.height = size + "px";
 
-  <button onclick="alert('👊 Brofist! Happy Valentine’s Day!')">Send Brofist</button>
+      h.style.left = (Math.random()*100) + "vw";
+      h.style.bottom = (-20 - Math.random()*40) + "px";
+      h.style.opacity = (0.15 + Math.random()*0.35).toFixed(2);
 
-  <p style="margin-top:22px;color:#666;">Made because you’re awesome.</p>
+      const duration = 6 + Math.random()*7;
+      h.style.animationDuration = duration + "s";
+
+      heartsLayer.appendChild(h);
+      setTimeout(() => h.remove(), duration * 1000);
+    }
+
+    function startHearts(){
+      if (heartInterval) return;
+      heartInterval = setInterval(spawnHeart, 320);
+    }
+
+    function stopHearts(){
+      clearInterval(heartInterval);
+      heartInterval = null;
+      heartsLayer.innerHTML = "";
+    }
+
+    startHearts();
+
+    document.getElementById("heartsBtn").addEventListener("click", () => {
+      heartsOn = !heartsOn;
+      const btn = document.getElementById("heartsBtn");
+      if (heartsOn){
+        btn.textContent = "💗 Hearts: ON";
+        startHearts();
+      } else {
+        btn.textContent = "🤍 Hearts: OFF";
+        stopHearts();
+      }
+    });
+
+    // ---- Music toggle ----
+    const music = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let musicPlaying = false;
+
+    musicBtn.addEventListener("click", async () => {
+      try{
+        if (!musicPlaying){
+          await music.play();
+          musicPlaying = true;
+          musicBtn.textContent = "⏸ Pause music";
+        } else {
+          music.pause();
+          musicPlaying = false;
+          musicBtn.textContent = "▶ Play music";
+        }
+      } catch(e){
+        alert("Music couldn’t play. Upload a file named music.mp3 to the repo (same folder as index.html).");
+      }
+    });
+
+    // ---- Surprise button ----
+    document.getElementById("surpriseBtn").addEventListener("click", () => {
+      const t = document.getElementById("surpriseText");
+      t.style.display = "block";
+      for (let i=0;i<18;i++) setTimeout(spawnHeart, i*40);
+    });
+  </script>
 </body>
 </html>
