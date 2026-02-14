@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy Valentine’s Day</title>
+  <style>
+    body{font-family:system-ui,Arial,sans-serif;max-width:760px;margin:40px auto;padding:0 18px;line-height:1.6}
+    h1{margin-bottom:0}
+    .sub{margin-top:6px;color:#444}
+    .card{border:1px solid #eee;border-radius:14px;padding:18px;margin:18px 0}
+    button{padding:10px 14px;border:0;border-radius:10px;cursor:pointer}
+  </style>
+</head>
+<body>
+  <h2>Feb 14th</h2>
+  <h1>Happy Valentine’s Day</h1>
+  <p class="sub">To A Princess 💌</p>
+
+  <p>Celebrating the person who listens to my pervy mind and still decides to be my friend beacuse you're a perv too lol.</p>
+
+  <div class="card">
+    <h2>Why You’re not The Best, i just dey manage you</h2>
+    <h3>the OG</h3>
+    <p><em>[hō-mē] noun • Universal</em></p>
+    <ol>
+      <li>Supports you when you're down and humble-brags for you when you're up.</li>
+      <li>Makes you laugh until your stomach hurts.</li>
+      <li>Listens to your endless stories without (much) complaint.</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Appreciation Post</h2>
+    <h3>The Perfect friend</h3>
+    <p>Thank you for actually being a good person regardless of your mood swings.</p>
+
+    <h3>The Listener</h3>
+    <p>Thanks for letting me vent and supporting me through the chaos.</p>
+
+    <h3>Priceless</h3>
+    <p>Your friendship is worth more than anything I could buy.</p>
+  </div>
+
+  <blockquote>
+    “Friendship is born at that moment when one person says to another, ‘What! You too? I thought I was the only one.’”
+    <br/>— C.S. Lewis
+  </blockquote>
+
+  <button onclick="alert('👊 Brofist! Happy Valentine’s Day!')">Send Brofist</button>
+
+  <p style="margin-top:22px;color:#666;">Made because you’re awesome.</p>
+</body>
+</html>
